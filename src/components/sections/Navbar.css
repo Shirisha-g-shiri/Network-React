@@ -1,0 +1,156 @@
+/* Navbar Styles */
+.navbar {
+  background: linear-gradient(90deg, rgba(0, 71, 171, 0.9), rgba(0, 128, 255, 0.7)); /* Gradient matching the homepage */
+  backdrop-filter: blur(10px) saturate(150%); /* Slightly toned-down glassmorphism */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for depth */
+  position: fixed; /* Ensure it stays at the top */
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px; /* Adjusted for better alignment with homepage content */
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-family: 'Exo 2', sans-serif; /* Keeping the font */
+  color: #ffffff; /* White for better contrast */
+  font-size: 1.8rem; /* Slightly smaller for balance */
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 25px; /* Slightly more spacing for a cleaner look */
+}
+
+.navbar-links a {
+  color: #ffffff; /* White to match the homepage's clean aesthetic */
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 16px; /* Slightly larger padding for better click area */
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.navbar-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Light hover effect to match homepage buttons */
+  color: #ffffff;
+  transform: scale(1.05); /* Subtle scale effect on hover */
+}
+
+.navbar-links a:active {
+  transform: translateY(2px);
+}
+
+/* Mobile View */
+.navbar-mobile {
+  display: none; /* Hidden by default, shown on smaller screens */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-toggle {
+  display: block;
+  background-color: #ffffff; /* White to match the homepage */
+  width: 30px;
+  height: 3px;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggle::before,
+.navbar-toggle::after {
+  content: '';
+  background-color: #ffffff; /* White to match */
+  width: 30px;
+  height: 3px;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggle::before {
+  top: -10px;
+}
+
+.navbar-toggle::after {
+  bottom: -10px;
+}
+
+.navbar-open .navbar-toggle {
+  transform: rotate(45deg);
+}
+
+.navbar-open .navbar-toggle::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.navbar-open .navbar-toggle::after {
+  bottom: 0;
+  transform: rotate(90deg);
+}
+
+.navbar-menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 200px;
+  background: linear-gradient(90deg, rgba(0, 71, 171, 0.95), rgba(0, 128, 255, 0.85)); /* Gradient matching the navbar */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  border-radius: 0.75rem;
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  gap: 15px;
+}
+
+.navbar-menu a {
+  color: #ffffff; /* White for consistency */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.navbar-open .navbar-menu {
+  display: flex; /* Show when toggled */
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+  .navbar-links {
+      display: none; /* Hide on small screens */
+  }
+
+  .navbar-mobile {
+      display: flex; /* Show mobile toggle */
+  }
+
+  .navbar-open .navbar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: linear-gradient(90deg, rgba(0, 71, 171, 0.95), rgba(0, 128, 255, 0.85)); /* Matching gradient */
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      width: 200px;
+      padding: 20px;
+      border-radius: 0.75rem;
+  }
+}
