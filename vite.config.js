@@ -1,20 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path'; // <--- ADD THIS
 
-// Your custom logger, if needed
 const logger = {
-  info(msg) {
-    console.log('info:', msg);
-  },
-  warn(msg) {
-    console.log('warn:', msg);
-  },
-  error(msg) {
-    console.log('error:', msg);
-  },
+  info(msg) { console.log('info:', msg); },
+  warn(msg) { console.log('warn:', msg); },
+  error(msg) { console.log('error:', msg); },
 };
 
-// Your transform HTML plugin, if needed
 const addTransformIndexHtml = {
   name: 'html-transform',
   transformIndexHtml(html) {
@@ -28,8 +21,13 @@ const addTransformIndexHtml = {
 export default defineConfig({
   customLogger: logger,
   plugins: [react(), addTransformIndexHtml],
-  // Removed base for Vercel deployment:
-  // base: '/Network-React/',
+
+  // ✅ ADD THIS
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
 
   server: {
     cors: true,
